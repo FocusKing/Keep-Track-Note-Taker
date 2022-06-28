@@ -40,7 +40,7 @@ I WANT to generate a webpage that displays my team's basic info
 SO THAT I have quick access to their emails and GitHub profiles  
 
 ## Visuals
-![Keep Track image](./images/Dream%20Team%20Generator.png)
+![Keep Track image](./images/keeptrack.png)
 ## Credits
  I was fortunate enough to get additional assistance from class mates either during office hours or during private study group sessions after class. I truly appreciate any help that I have received throughout this project.
 
