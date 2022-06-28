@@ -1,5 +1,4 @@
 const express = require('express');
-const { Http2ServerRequest } = require('http2');
 const app = express();
 const path = require('path');
 const PORT = process.env.PORT || 3001;   // connect to your port 3001
@@ -13,18 +12,21 @@ app.use(express.urlencoded({ extended: true}));
 app.use(express.static('public'));
 
 app.get('/api/notes',(req,res) => {
+    console.log(notes);
     res.json(notes);
+
 });
 
 
 app.get('/notes',(req,res) => {
+    console.log((path.join(__dirname,'./Develop/public/notes.html')));
     res.sendFile(path.join(__dirname,'./Develop/public/notes.html'));
 })
 
 
-app.get('/',(req,res) => {
-    res.sendFile(path.join(__dirname,'./Develop/public/index.html'));
-})
+// app.get('/',(req,res) => {
+//     res.sendFile(path.join(__dirname,'./Develop/public/index.html'));
+// })
 
 
 app.get('*',(req,res) => {
@@ -33,16 +35,26 @@ app.get('*',(req,res) => {
 
 
 
+app.post('/api/notes',(req,res) => {
+    const { title, text } = req.body;
+    if (title && text) {
+      const newNote = {
+        title,
+        text,
+        id: uuid(),
+      };
+      notes.push(newNote);
+      let noteArray = JSON.stringify((notes), null, 2);
+      fs.writeFile(`./Develop/db/db.json`, noteArray, () => {
+        const response = {
+          body: newNote,
+        }
+        res.json(response);
+      })
+    };;
+  }); 
 
-// The following HTML routes should be created:
 
-// GET /notes should return the notes.html file.
-
-// GET * should return the index.html file.
-
-// The following API routes should be created:
-
-// GET /api/notes should read the db.json file and return all saved notes as JSON.
 
 // POST /api/notes should receive a new note to save on the request body, 
 // add it to the db.json file, and then return the new note to the client. 
@@ -60,10 +72,7 @@ app.get('*',(req,res) => {
 
 
 
-// // paths will not collide and can have the same route because the run on different methods
-// app.post('/api/notes',(req,res) => {
-//     res.json(req.body);
-// // this push context from the body to notes
+
 
 // const updateNote = { ...req.body, id: uuid() };
 //     notes.push(req.body);
@@ -77,7 +86,7 @@ app.get('*',(req,res) => {
 // app.delete('/api/notes/:id', (req,res) => {
 //  const filteredNotes = notes.filter(note => note.id === id);
 
-// });
+// 
 
 // app.use(express.json());
 // app.use(expres.urlencoded({ extended: true}));
