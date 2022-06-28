@@ -48,4 +48,4 @@ MIT License
 Copyright (c) [2022] [Marquise Allen]
 
 ## Tests
-Great way to test the program is by using node index.js, review the terminal for any errors. You can also console log data to see how the program is running and what information is being pulled through. 
+Great way to test the program is by using npm start, if you have installed nodemon globally, you may also be able to test the program by using it.  Be sure to review the terminal for any errors. You can also console log data to see how the program is running and what information is being pulled through. 
