@@ -3,8 +3,6 @@
 ## Resources 
 [GitHubLink](https://github.com/FocusKing/Keep-Track-Note-Taker)
 
-
-[Screencastify-Link]()
 ## Badges
 ![stayCLEAN](https://img.shields.io/badge/stay-CLEAN-blue)
 
