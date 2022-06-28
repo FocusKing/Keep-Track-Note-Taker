@@ -9,7 +9,7 @@ const uuid = require('./Develop/utils/utils');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
 
-app.use(express.static('public'));
+app.use(express.static('./Develop/public'));
 
 app.get('/api/notes',(req,res) => {
     console.log(notes);
