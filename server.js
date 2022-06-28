@@ -4,7 +4,7 @@ const path = require('path');
 const PORT = process.env.PORT || 3001;   // connect to your port 3001
 const fs = require('fs');
 const notes = require('./Develop/db/db.json');
-const uuid = require('./Develop/utils/utils');
+const {uuid} = require('./Develop/utils/utils');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
@@ -12,7 +12,6 @@ app.use(express.urlencoded({ extended: true}));
 app.use(express.static('./Develop/public'));
 
 app.get('/api/notes',(req,res) => {
-    console.log(notes);
     res.json(notes);
 
 });
